@@ -47,16 +47,16 @@ namespace Flussi
             StreamReader AMBOrigine = new StreamReader(openFileDialog1.FileName);
             StreamReader AMBNuovo = new StreamReader(openFileDialog2.FileName);
             StreamWriter Risultato = new StreamWriter(saveFileDialog1.FileName);
-            
+
             string LineaOrigine = "";
             string LineaNuovo = "";
             string LineaRisultato = "";
             string IDNuovo = "";
             string IDOrigine = "";
             string PraticaOrigine = "";
-            
+
             while (LineaNuovo != null)
-            {                
+            {
                 LineaNuovo = AMBNuovo.ReadLine(); // Leggo una riga del file NUOVO
                 if (LineaNuovo != null)
                 {
@@ -78,7 +78,7 @@ namespace Flussi
                                 AMBOrigine = new StreamReader(openFileDialog1.FileName);
                                 break;
                             }
-                        }                        
+                        }
                     }
                 }
             }
