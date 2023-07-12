@@ -81,6 +81,7 @@ namespace Flussi
             Risultato.Close();
             AMBNuovo.Close();
             AMBOrigine.Close();
+            MessageBox.Show("Fatto!");
         }
     }
 }
