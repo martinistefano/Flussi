@@ -113,10 +113,11 @@
             // 
             // Assembla
             // 
+            Assembla.Dock = DockStyle.Bottom;
             Assembla.Enabled = false;
-            Assembla.Location = new Point(106, 217);
+            Assembla.Location = new Point(0, 178);
             Assembla.Name = "Assembla";
-            Assembla.Size = new Size(116, 46);
+            Assembla.Size = new Size(279, 46);
             Assembla.TabIndex = 6;
             Assembla.Text = "ASSEMBLA";
             Assembla.UseVisualStyleBackColor = true;
@@ -127,7 +128,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(323, 275);
+            ClientSize = new Size(279, 224);
             Controls.Add(Assembla);
             Controls.Add(label3);
             Controls.Add(label2);
