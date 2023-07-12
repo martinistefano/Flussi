@@ -46,7 +46,7 @@
             ApriAMB.Name = "ApriAMB";
             ApriAMB.Size = new Size(116, 46);
             ApriAMB.TabIndex = 0;
-            ApriAMB.Text = "Apri flusso AMB...";
+            ApriAMB.Text = "Seleziona flusso AMB 1...";
             ApriAMB.UseVisualStyleBackColor = true;
             ApriAMB.Click += ApriAMB_Click;
             // 
@@ -57,7 +57,7 @@
             ApriNuovi.Name = "ApriNuovi";
             ApriNuovi.Size = new Size(116, 46);
             ApriNuovi.TabIndex = 1;
-            ApriNuovi.Text = "File AMB da inserire...";
+            ApriNuovi.Text = "Seleziona AMB 3 da inserire...";
             ApriNuovi.UseVisualStyleBackColor = true;
             ApriNuovi.Click += ApriNuovi_Click;
             // 
@@ -119,7 +119,7 @@
             Assembla.Name = "Assembla";
             Assembla.Size = new Size(279, 46);
             Assembla.TabIndex = 6;
-            Assembla.Text = "ASSEMBLA";
+            Assembla.Text = "Crea il nuovo file";
             Assembla.UseVisualStyleBackColor = true;
             Assembla.Click += Assembla_Click;
             // 
