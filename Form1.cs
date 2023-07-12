@@ -47,35 +47,39 @@ namespace Flussi
             StreamReader AMBOrigine = new StreamReader(openFileDialog1.FileName);
             StreamReader AMBNuovo = new StreamReader(openFileDialog2.FileName);
             StreamWriter Risultato = new StreamWriter(saveFileDialog1.FileName);
+            
             string LineaOrigine = "";
             string LineaNuovo = "";
             string LineaRisultato = "";
             string IDNuovo = "";
             string IDOrigine = "";
             string PraticaOrigine = "";
+            
             while (LineaNuovo != null)
-            {
-                LineaNuovo = AMBNuovo.ReadLine();
+            {                
+                LineaNuovo = AMBNuovo.ReadLine(); // Leggo una riga del file NUOVO
                 if (LineaNuovo != null)
                 {
-                    IDNuovo = LineaNuovo.Substring(0, 44);
-                    while (LineaOrigine != null)
+                    IDNuovo = LineaNuovo.Substring(0, 44); // Imposto IDNuovo se non è finito il file
+                    MessageBox.Show("Cerco l'ID: " + IDNuovo);
+                    while (LineaOrigine != null) // Alla prima esecuzione LineaOrigine è ""
                     {
-                        LineaOrigine = AMBOrigine.ReadLine();
+                        LineaOrigine = AMBOrigine.ReadLine(); // Imposto LineaOrigine leggendo la prossima riga di AMBOrigine
                         if (LineaOrigine != null)
                         {
-                            IDOrigine = LineaOrigine.Substring(0, 44);
-                            PraticaOrigine = LineaOrigine.Substring(44, 10);
+                            IDOrigine = LineaOrigine.Substring(0, 44); // Se AMBOrigine non è finito imposto IDOrigine e...
                             if (IDOrigine == IDNuovo)
                             {
+                                PraticaOrigine = LineaOrigine.Substring(44, 10);
                                 LineaRisultato = IDOrigine + PraticaOrigine + LineaNuovo.Substring(54, LineaNuovo.Length - 54);
-                                Risultato.WriteLine(LineaRisultato);
-                                MessageBox.Show("Scritto un record!");
+                                Risultato.WriteLine(LineaRisultato); // Se gli ID corrispondono scrivo una riga nel file Risultato
+                                MessageBox.Show("Scritto il record " + IDNuovo + " con pratica numero " + PraticaOrigine);
+                                AMBOrigine.Close();
+                                AMBOrigine = new StreamReader(openFileDialog1.FileName);
+                                break;
                             }
-                        }
-
+                        }                        
                     }
-
                 }
             }
             Risultato.Close();
