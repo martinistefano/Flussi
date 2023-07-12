@@ -28,56 +28,131 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            ApriAMB = new Button();
+            ApriNuovi = new Button();
+            Destinazione = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog2 = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            Assembla = new Button();
             SuspendLayout();
             // 
-            // button1
+            // ApriAMB
             // 
-            button1.Location = new Point(12, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            ApriAMB.Location = new Point(12, 12);
+            ApriAMB.Name = "ApriAMB";
+            ApriAMB.Size = new Size(116, 46);
+            ApriAMB.TabIndex = 0;
+            ApriAMB.Text = "Apri flusso AMB...";
+            ApriAMB.UseVisualStyleBackColor = true;
+            ApriAMB.Click += ApriAMB_Click;
             // 
-            // button2
+            // ApriNuovi
             // 
-            button2.Location = new Point(12, 41);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            ApriNuovi.Enabled = false;
+            ApriNuovi.Location = new Point(12, 64);
+            ApriNuovi.Name = "ApriNuovi";
+            ApriNuovi.Size = new Size(116, 46);
+            ApriNuovi.TabIndex = 1;
+            ApriNuovi.Text = "File AMB da inserire...";
+            ApriNuovi.UseVisualStyleBackColor = true;
+            ApriNuovi.Click += ApriNuovi_Click;
             // 
-            // button3
+            // Destinazione
             // 
-            button3.Location = new Point(12, 70);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 2;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            Destinazione.Enabled = false;
+            Destinazione.Location = new Point(12, 116);
+            Destinazione.Name = "Destinazione";
+            Destinazione.Size = new Size(116, 46);
+            Destinazione.TabIndex = 2;
+            Destinazione.Text = "Seleziona destinazione...";
+            Destinazione.UseVisualStyleBackColor = true;
+            Destinazione.Click += Destinazione_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.Filter = "File TXT (*.txt)|*.txt";
+            // 
+            // openFileDialog2
+            // 
+            openFileDialog2.Filter = "File TXT (*.txt)|*.txt";
+            // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.Filter = "File TXT (*.txt)|*.txt";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(134, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(62, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Percorso...";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(134, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(62, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Percorso...";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(134, 132);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Percorso...";
+            // 
+            // Assembla
+            // 
+            Assembla.Enabled = false;
+            Assembla.Location = new Point(12, 209);
+            Assembla.Name = "Assembla";
+            Assembla.Size = new Size(116, 46);
+            Assembla.TabIndex = 6;
+            Assembla.Text = "ASSEMBLA";
+            Assembla.UseVisualStyleBackColor = true;
+            Assembla.Click += Assembla_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 712);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            AutoSize = true;
+            ClientSize = new Size(295, 275);
+            Controls.Add(Assembla);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(Destinazione);
+            Controls.Add(ApriNuovi);
+            Controls.Add(ApriAMB);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Assemblaggio Flussi AMB";
             Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button ApriAMB;
+        private Button ApriNuovi;
+        private Button Destinazione;
+        private OpenFileDialog openFileDialog1;
+        private OpenFileDialog openFileDialog2;
+        private SaveFileDialog saveFileDialog1;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Button Assembla;
     }
 }
