@@ -51,13 +51,16 @@ namespace Flussi
 
             string LineaOrigine = "";
             string LineaNuovo = "";
+            bool Trovato = true;
+
             while (LineaNuovo != null)
             {
                 LineaNuovo = AMBNuovo.ReadLine(); // Leggo una riga del file NUOVO
                 if (LineaNuovo != null)
                 {
                     string IDNuovo = LineaNuovo.Substring(0, 44);
-                    Log.WriteLine(IDNuovo);
+                    Log.Write(IDNuovo);
+                    Trovato = false;
                     while (LineaOrigine != null) // Alla prima esecuzione LineaOrigine è ""
                     {
                         LineaOrigine = AMBOrigine.ReadLine(); // Imposto LineaOrigine leggendo la prossima riga di AMBOrigine
@@ -66,16 +69,18 @@ namespace Flussi
                             string IDOrigine = LineaOrigine.Substring(0, 44);
                             if (IDOrigine == IDNuovo)
                             {
+                                Trovato = true;
                                 string PraticaOrigine = LineaOrigine.Substring(44, 10);
                                 string LineaRisultato = IDOrigine + PraticaOrigine + LineaNuovo.Substring(54, LineaNuovo.Length - 54);
                                 Risultato.WriteLine(LineaRisultato); // Se gli ID corrispondono scrivo una riga nel file Risultato
-                                Log.WriteLine("Trovato e inserito con pratica numero " + PraticaOrigine + "\n");
+                                Log.Write(" trovato e inserito con pratica numero " + PraticaOrigine + "\n");
                                 AMBOrigine.Close();
                                 AMBOrigine = new StreamReader(openFileDialog1.FileName);
                                 break;
                             }
                         }
                     }
+                    if (Trovato == false) Log.Write(" NON trovato!\n");
                 }
             }
             Risultato.Close();
