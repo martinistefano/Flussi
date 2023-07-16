@@ -38,6 +38,11 @@
             label2 = new Label();
             label3 = new Label();
             Assembla = new Button();
+            listBox1 = new ListBox();
+            Unisci = new Button();
+            saveFileDialog2 = new SaveFileDialog();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // ApriAMB
@@ -115,20 +120,54 @@
             // 
             Assembla.Dock = DockStyle.Bottom;
             Assembla.Enabled = false;
-            Assembla.Location = new Point(0, 178);
+            Assembla.Location = new Point(0, 209);
             Assembla.Name = "Assembla";
-            Assembla.Size = new Size(279, 46);
+            Assembla.Size = new Size(592, 46);
             Assembla.TabIndex = 6;
             Assembla.Text = "Crea il nuovo file";
             Assembla.UseVisualStyleBackColor = true;
             Assembla.Click += Assembla_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.AllowDrop = true;
+            listBox1.Enabled = false;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(6, 22);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(211, 109);
+            listBox1.TabIndex = 7;
+            // 
+            // Unisci
+            // 
+            Unisci.Enabled = false;
+            Unisci.Location = new Point(6, 137);
+            Unisci.Name = "Unisci";
+            Unisci.Size = new Size(211, 30);
+            Unisci.TabIndex = 8;
+            Unisci.Text = "Unisci i file...";
+            Unisci.UseVisualStyleBackColor = true;
+            Unisci.Click += Unisci_Click_1;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(Unisci);
+            groupBox1.Controls.Add(listBox1);
+            groupBox1.Location = new Point(357, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(223, 180);
+            groupBox1.TabIndex = 9;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Unisci diversi AMB 3 (opzionale)";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(279, 224);
+            ClientSize = new Size(592, 255);
+            Controls.Add(groupBox1);
             Controls.Add(Assembla);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -139,6 +178,7 @@
             Name = "Form1";
             Text = "Assemblaggio Flussi AMB";
             Load += Form1_Load;
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -155,5 +195,9 @@
         private Label label2;
         private Label label3;
         private Button Assembla;
+        private ListBox listBox1;
+        private Button Unisci;
+        private SaveFileDialog saveFileDialog2;
+        private GroupBox groupBox1;
     }
 }

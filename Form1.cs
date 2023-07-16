@@ -8,11 +8,27 @@ namespace Flussi
         public Form1()
         {
             InitializeComponent();
+            this.listBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
+            this.listBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox1_DragEnter);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void listBox1_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.All;
+            else e.Effect = DragDropEffects.None;
+        }
+
+        private void listBox1_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            int i;
+            for (i = 0; i < s.Length; i++) listBox1.Items.Add(s[i]);
+            Unisci.Enabled = true;
         }
 
         private void ApriAMB_Click(object sender, EventArgs e)
@@ -21,6 +37,7 @@ namespace Flussi
             {
                 label1.Text = openFileDialog1.FileName;
                 ApriNuovi.Enabled = true;
+                listBox1.Enabled = true;
             }
         }
 
@@ -88,6 +105,23 @@ namespace Flussi
             AMBOrigine.Close();
             Log.Close();
             MessageBox.Show("Fatto!");
+        }
+
+        private void Unisci_Click_1(object sender, EventArgs e)
+        {
+            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                int quanti = listBox1.Items.Count;
+                for (int i = 0; i < quanti; i++)
+                {
+                    StreamReader Fonte = new StreamReader(listBox1.Items[i].ToString());
+                    File.AppendAllText(saveFileDialog2.FileName, Fonte.ReadToEnd());
+                    Fonte.Close();
+                }
+                label2.Text = saveFileDialog2.FileName;
+                openFileDialog2.FileName = saveFileDialog2.FileName;
+                Destinazione.Enabled = true;
+            }
         }
     }
 }
