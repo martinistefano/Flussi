@@ -64,11 +64,11 @@ namespace Flussi
             StreamReader AMB3 = new(label2.Text);
             StreamWriter FileNuovo = new(label3.Text);
             StreamWriter FileLog = new(label3.Text + ".log");
-            String LineaAMB3 = AMB3.ReadLine();
+            String? LineaAMB3 = AMB3.ReadLine();
 
             while (LineaAMB3 != null)
             {
-                String LineaAMB1 = AMB1.ReadLine();
+                String? LineaAMB1 = AMB1.ReadLine();
                 if (LineaAMB1 == null)
                 {
                     FileLog.WriteLine(LineaAMB3.Substring(0, 44) + " NON trovato!");
@@ -76,14 +76,14 @@ namespace Flussi
                     AMB1 = new(label1.Text);
                     LineaAMB3 = AMB3.ReadLine();
                 }
-                else if (LineaAMB3.Substring(0,44) == LineaAMB1.Substring(0,44))
+                else if (LineaAMB3.Substring(0, 44) == LineaAMB1.Substring(0, 44))
                 {
                     FileNuovo.WriteLine(LineaAMB1.Substring(0, 54) + LineaAMB3.Substring(54, LineaAMB3.Length - 54));
-                    FileLog.WriteLine(LineaAMB3.Substring(0,44) + " trovato e inserito con pratica numero " + LineaAMB1.Substring(44,10));
+                    FileLog.WriteLine(LineaAMB3.Substring(0, 44) + " trovato e inserito con pratica numero " + LineaAMB1.Substring(44, 10));
                     AMB1.Close();
                     AMB1 = new(label1.Text);
                     LineaAMB3 = AMB3.ReadLine();
-                }            
+                }
             }
             AMB1.Close();
             AMB3.Close();

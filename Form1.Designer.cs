@@ -123,9 +123,9 @@
             // 
             Assembla.Dock = DockStyle.Bottom;
             Assembla.Enabled = false;
-            Assembla.Location = new Point(0, 215);
+            Assembla.Location = new Point(0, 219);
             Assembla.Name = "Assembla";
-            Assembla.Size = new Size(528, 46);
+            Assembla.Size = new Size(500, 46);
             Assembla.TabIndex = 6;
             Assembla.Text = "Crea il nuovo file";
             Assembla.UseVisualStyleBackColor = true;
@@ -167,9 +167,10 @@
             groupBox1.Controls.Add(Unisci);
             groupBox1.Controls.Add(listBox1);
             groupBox1.Dock = DockStyle.Right;
-            groupBox1.Location = new Point(305, 0);
+            groupBox1.Location = new Point(277, 0);
+            groupBox1.Margin = new Padding(10);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(223, 215);
+            groupBox1.Size = new Size(223, 219);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Unisci diversi AMB 3 (opzionale)";
@@ -186,8 +187,9 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Dock = DockStyle.Left;
             groupBox2.Location = new Point(0, 0);
+            groupBox2.Margin = new Padding(10);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(196, 215);
+            groupBox2.Size = new Size(196, 219);
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "Seleziona file";
@@ -199,12 +201,13 @@
             AutoScroll = true;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(528, 261);
+            ClientSize = new Size(484, 226);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(Assembla);
-            MinimumSize = new Size(544, 300);
+            MinimumSize = new Size(500, 265);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Assemblaggio Flussi AMB";
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
