@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System;
 
 namespace Flussi
@@ -61,49 +60,35 @@ namespace Flussi
 
         private void Assembla_Click(object sender, EventArgs e)
         {
-            StreamReader AMBOrigine = new StreamReader(openFileDialog1.FileName);
-            StreamReader AMBNuovo = new StreamReader(openFileDialog2.FileName);
-            StreamWriter Risultato = new StreamWriter(saveFileDialog1.FileName);
-            StreamWriter Log = new StreamWriter(saveFileDialog1.FileName + ".log");
+            StreamReader AMB1 = new(label1.Text);
+            StreamReader AMB3 = new(label2.Text);
+            StreamWriter FileNuovo = new(label3.Text);
+            StreamWriter FileLog = new(label3.Text + ".log");
+            String LineaAMB3 = AMB3.ReadLine();
 
-            string LineaOrigine = "";
-            string LineaNuovo = "";
-            bool Trovato = true;
-
-            while (LineaNuovo != null)
+            while (LineaAMB3 != null)
             {
-                LineaNuovo = AMBNuovo.ReadLine(); // Leggo una riga del file NUOVO
-                if (LineaNuovo != null)
+                String LineaAMB1 = AMB1.ReadLine();
+                if (LineaAMB1 == null)
                 {
-                    string IDNuovo = LineaNuovo.Substring(0, 44);
-                    Log.Write(IDNuovo);
-                    Trovato = false;
-                    while (LineaOrigine != null) // Alla prima esecuzione LineaOrigine è ""
-                    {
-                        LineaOrigine = AMBOrigine.ReadLine(); // Imposto LineaOrigine leggendo la prossima riga di AMBOrigine
-                        if (LineaOrigine != null)
-                        {
-                            string IDOrigine = LineaOrigine.Substring(0, 44);
-                            if (IDOrigine == IDNuovo)
-                            {
-                                Trovato = true;
-                                string PraticaOrigine = LineaOrigine.Substring(44, 10);
-                                string LineaRisultato = IDOrigine + PraticaOrigine + LineaNuovo.Substring(54, LineaNuovo.Length - 54);
-                                Risultato.WriteLine(LineaRisultato); // Se gli ID corrispondono scrivo una riga nel file Risultato
-                                Log.Write(" trovato e inserito con pratica numero " + PraticaOrigine + "\n");
-                                AMBOrigine.Close();
-                                AMBOrigine = new StreamReader(openFileDialog1.FileName);
-                                break;
-                            }
-                        }
-                    }
-                    if (Trovato == false) Log.Write(" NON trovato!\n");
+                    FileLog.WriteLine(LineaAMB3.Substring(0, 44) + " NON trovato!");
+                    AMB1.Close();
+                    AMB1 = new(label1.Text);
+                    LineaAMB3 = AMB3.ReadLine();
                 }
+                else if (LineaAMB3.Substring(0,44) == LineaAMB1.Substring(0,44))
+                {
+                    FileNuovo.WriteLine(LineaAMB1.Substring(0, 54) + LineaAMB3.Substring(54, LineaAMB3.Length - 54));
+                    FileLog.WriteLine(LineaAMB3.Substring(0,44) + " trovato e inserito con pratica numero " + LineaAMB1.Substring(44,10));
+                    AMB1.Close();
+                    AMB1 = new(label1.Text);
+                    LineaAMB3 = AMB3.ReadLine();
+                }            
             }
-            Risultato.Close();
-            AMBNuovo.Close();
-            AMBOrigine.Close();
-            Log.Close();
+            AMB1.Close();
+            AMB3.Close();
+            FileNuovo.Close();
+            FileLog.Close();
             MessageBox.Show("Fatto!");
         }
 
@@ -119,8 +104,8 @@ namespace Flussi
                     Fonte = new StreamReader(listBox1.Items[i].ToString());
                     Fonte.Close();
                 }
-                label2.Text = saveFileDialog2.FileName;
                 openFileDialog2.FileName = saveFileDialog2.FileName;
+                label2.Text = saveFileDialog2.FileName;
                 Destinazione.Enabled = true;
                 listBox1.Items.Clear();
             }

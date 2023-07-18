@@ -134,12 +134,15 @@
             // listBox1
             // 
             listBox1.AllowDrop = true;
+            listBox1.Dock = DockStyle.Top;
             listBox1.Enabled = false;
             listBox1.FormattingEnabled = true;
+            listBox1.HorizontalScrollbar = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(6, 22);
+            listBox1.Location = new Point(3, 19);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(211, 109);
+            listBox1.Size = new Size(217, 109);
+            listBox1.Sorted = true;
             listBox1.TabIndex = 7;
             // 
             // Unisci
