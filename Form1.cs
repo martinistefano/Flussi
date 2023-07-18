@@ -1,5 +1,3 @@
-using System;
-
 namespace Flussi
 {
     public partial class Form1 : Form
@@ -99,7 +97,7 @@ namespace Flussi
                 int quanti = listBox1.Items.Count;
                 for (int i = 0; i < quanti; i++)
                 {
-                    StreamReader Fonte = new StreamReader(listBox1.Items[i].ToString());
+                    StreamReader Fonte = new(listBox1.Items[i].ToString());
                     File.AppendAllText(saveFileDialog2.FileName, Fonte.ReadToEnd());
                     Fonte = new StreamReader(listBox1.Items[i].ToString());
                     Fonte.Close();
