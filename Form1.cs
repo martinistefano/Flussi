@@ -116,11 +116,13 @@ namespace Flussi
                 {
                     StreamReader Fonte = new StreamReader(listBox1.Items[i].ToString());
                     File.AppendAllText(saveFileDialog2.FileName, Fonte.ReadToEnd());
+                    Fonte = new StreamReader(listBox1.Items[i].ToString());
                     Fonte.Close();
                 }
                 label2.Text = saveFileDialog2.FileName;
                 openFileDialog2.FileName = saveFileDialog2.FileName;
                 Destinazione.Enabled = true;
+                listBox1.Items.Clear();
             }
         }
     }

@@ -42,12 +42,14 @@
             Unisci = new Button();
             saveFileDialog2 = new SaveFileDialog();
             groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // ApriAMB
             // 
-            ApriAMB.Location = new Point(12, 12);
+            ApriAMB.Location = new Point(6, 22);
             ApriAMB.Name = "ApriAMB";
             ApriAMB.Size = new Size(116, 46);
             ApriAMB.TabIndex = 0;
@@ -58,7 +60,7 @@
             // ApriNuovi
             // 
             ApriNuovi.Enabled = false;
-            ApriNuovi.Location = new Point(12, 64);
+            ApriNuovi.Location = new Point(6, 74);
             ApriNuovi.Name = "ApriNuovi";
             ApriNuovi.Size = new Size(116, 46);
             ApriNuovi.TabIndex = 1;
@@ -69,7 +71,7 @@
             // Destinazione
             // 
             Destinazione.Enabled = false;
-            Destinazione.Location = new Point(12, 116);
+            Destinazione.Location = new Point(7, 126);
             Destinazione.Name = "Destinazione";
             Destinazione.Size = new Size(116, 46);
             Destinazione.TabIndex = 2;
@@ -87,12 +89,13 @@
             // 
             // saveFileDialog1
             // 
+            saveFileDialog1.DefaultExt = "txt";
             saveFileDialog1.Filter = "File TXT (*.txt)|*.txt";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(134, 28);
+            label1.Location = new Point(128, 38);
             label1.Name = "label1";
             label1.Size = new Size(62, 15);
             label1.TabIndex = 3;
@@ -101,7 +104,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(134, 80);
+            label2.Location = new Point(128, 90);
             label2.Name = "label2";
             label2.Size = new Size(62, 15);
             label2.TabIndex = 4;
@@ -110,7 +113,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(134, 132);
+            label3.Location = new Point(128, 142);
             label3.Name = "label3";
             label3.Size = new Size(62, 15);
             label3.TabIndex = 5;
@@ -120,9 +123,9 @@
             // 
             Assembla.Dock = DockStyle.Bottom;
             Assembla.Enabled = false;
-            Assembla.Location = new Point(0, 209);
+            Assembla.Location = new Point(0, 215);
             Assembla.Name = "Assembla";
-            Assembla.Size = new Size(592, 46);
+            Assembla.Size = new Size(528, 46);
             Assembla.TabIndex = 6;
             Assembla.Text = "Crea il nuovo file";
             Assembla.UseVisualStyleBackColor = true;
@@ -142,7 +145,7 @@
             // Unisci
             // 
             Unisci.Enabled = false;
-            Unisci.Location = new Point(6, 137);
+            Unisci.Location = new Point(6, 142);
             Unisci.Name = "Unisci";
             Unisci.Size = new Size(211, 30);
             Unisci.TabIndex = 8;
@@ -150,35 +153,60 @@
             Unisci.UseVisualStyleBackColor = true;
             Unisci.Click += Unisci_Click_1;
             // 
+            // saveFileDialog2
+            // 
+            saveFileDialog2.DefaultExt = "txt";
+            saveFileDialog2.Filter = "File TXT (*.txt)|*.txt";
+            // 
             // groupBox1
             // 
+            groupBox1.AutoSize = true;
             groupBox1.Controls.Add(Unisci);
             groupBox1.Controls.Add(listBox1);
-            groupBox1.Location = new Point(357, 12);
+            groupBox1.Dock = DockStyle.Right;
+            groupBox1.Location = new Point(305, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(223, 180);
+            groupBox1.Size = new Size(223, 215);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Unisci diversi AMB 3 (opzionale)";
+            // 
+            // groupBox2
+            // 
+            groupBox2.AutoSize = true;
+            groupBox2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            groupBox2.Controls.Add(ApriAMB);
+            groupBox2.Controls.Add(ApriNuovi);
+            groupBox2.Controls.Add(Destinazione);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(label1);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Dock = DockStyle.Left;
+            groupBox2.Location = new Point(0, 0);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(196, 215);
+            groupBox2.TabIndex = 10;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Seleziona file";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             AutoSize = true;
-            ClientSize = new Size(592, 255);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(528, 261);
+            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(Assembla);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(Destinazione);
-            Controls.Add(ApriNuovi);
-            Controls.Add(ApriAMB);
+            MinimumSize = new Size(544, 300);
             Name = "Form1";
             Text = "Assemblaggio Flussi AMB";
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,5 +227,6 @@
         private Button Unisci;
         private SaveFileDialog saveFileDialog2;
         private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }
