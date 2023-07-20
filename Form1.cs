@@ -63,6 +63,8 @@ namespace Flussi
             StreamWriter FileNuovo = new(label3.Text);
             StreamWriter FileLog = new(label3.Text + ".log");
             String? LineaAMB3 = AMB3.ReadLine();
+            int elaborati = 0;
+            int trovati = 0;
 
             while (LineaAMB3 != null)
             {
@@ -73,6 +75,7 @@ namespace Flussi
                     AMB1.Close();
                     AMB1 = new(label1.Text);
                     LineaAMB3 = AMB3.ReadLine();
+                    elaborati++;
                 }
                 else if (LineaAMB3.Substring(0, 44) == LineaAMB1.Substring(0, 44))
                 {
@@ -81,13 +84,23 @@ namespace Flussi
                     AMB1.Close();
                     AMB1 = new(label1.Text);
                     LineaAMB3 = AMB3.ReadLine();
+                    elaborati++;
+                    trovati++;
+                }
+                if (LineaAMB3 != null)
+                {
+                    if (LineaAMB3.Substring(LineaAMB3.Length - 4, 4) == ".txt")
+                    {
+                        FileLog.WriteLine("\n" + LineaAMB3);
+                        LineaAMB3 = AMB3.ReadLine();
+                    }
                 }
             }
             AMB1.Close();
             AMB3.Close();
             FileNuovo.Close();
             FileLog.Close();
-            MessageBox.Show("Fatto!");
+            MessageBox.Show("Trovati e modificati " + trovati + " numeri di pratica su " + elaborati + ".");
         }
 
         private void Unisci_Click_1(object sender, EventArgs e)
@@ -97,10 +110,8 @@ namespace Flussi
                 int quanti = listBox1.Items.Count;
                 for (int i = 0; i < quanti; i++)
                 {
-                    StreamReader Fonte = new(listBox1.Items[i].ToString());
-                    File.AppendAllText(saveFileDialog2.FileName, Fonte.ReadToEnd());
-                    Fonte = new StreamReader(listBox1.Items[i].ToString());
-                    Fonte.Close();
+                    File.AppendAllText(saveFileDialog2.FileName, listBox1.Items[i].ToString() + "\n");
+                    File.AppendAllText(saveFileDialog2.FileName, File.ReadAllText(listBox1.Items[i].ToString()));
                 }
                 openFileDialog2.FileName = saveFileDialog2.FileName;
                 label2.Text = saveFileDialog2.FileName;
